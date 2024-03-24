@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    container_name: db
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - '5432:5432'
+    networks:
+      - net
+
+  backend:
+    build:
+      context: ./app
+    container_name: backend
+    command: sh -c "python manage.py makemigrations && python manage.py makemigrations accounts && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    # depends_on:
+    #   - db
+    networks:
+      - net
+
+
+networks:
+  net:
+    name: net
+    driver: bridge

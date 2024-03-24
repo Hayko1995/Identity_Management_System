@@ -1,0 +1,4 @@
+1. Change response messages for djoser APIs'.
+
+2. Fix templates for gmail messaging. Currently instead of 'RPE Controls' name we receive '0.0.0.0:8000' as a company name. 
+   I changed it in the templates, but it still gets '0.0.0.0:8000' as a company name. Need to fix this behaviour. 
