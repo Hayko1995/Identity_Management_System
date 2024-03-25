@@ -31,11 +31,11 @@ from two_factor.urls import urlpatterns as tf_urls
 from accounts.admin import admin_site
 
 
-
 urlpatterns = [
     # Original Admin panel
     path('admin/', admin.site.urls),
     path('api/auth/', include('djoser.urls')),
+    path('blog/', include('blog.urls')),
 
     # URLs for Djoser/Django social OAuth2 login.
     path('api/auth/social/', include('djoser.social.urls')),
