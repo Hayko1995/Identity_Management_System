@@ -31,11 +31,10 @@ from two_factor.urls import urlpatterns as tf_urls
 from accounts.admin import admin_site
 
 
+
 urlpatterns = [
     # Original Admin panel
     path('admin/', admin.site.urls),
-    path('api/auth/jwt/create', CustomJWTToken.as_view()),
-    path('api/auth/', include('djoser.urls')),
     path('api/auth/', include('djoser.urls')),
 
     # URLs for Djoser/Django social OAuth2 login.
@@ -46,10 +45,10 @@ urlpatterns = [
     path('accounts/profile/', ObtainUserFromGoogle.as_view()),
     path('api/auth/', include('djoser.urls.jwt')),
 
-
+    path('api/auth/jwt/create', CustomJWTToken.as_view(), name='login'),
     path('updateUser/', UserChangePasswordView.as_view(), name='updateUser'),
-    path('logout/', TokenBlacklistView.as_view(), name='token_blacklist'),
-    path('auth/jwt/create/', CutomObtainPairView.as_view(), name='customtoken'),
+    path('logout/', TokenBlacklistView.as_view(), name='logout'),
+    path('auth/jwt/create/', CutomObtainPairView.as_view(), name='login'),
     path('resetPassword/', ResetPasswordView.as_view(), name='customtoken'),
 
     path('otp/', admin_site.urls),
