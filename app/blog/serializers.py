@@ -1,6 +1,7 @@
 from djoser.serializers import UserSerializer as BaseUserSerializer
 from rest_framework import serializers
 from accounts.models import User
+import json
 from blog.models import Actions, Projects, Groups, Roles
 
 
@@ -28,7 +29,6 @@ class CreateRolesSerializer(serializers.ModelSerializer):
     def create(self, attrs):
         roles = Roles.objects.create()
         roles.name = attrs['name']
-        actions = Actions.objects.all()
         roles.actions_id = Actions.objects.get(name=attrs['actions']).id
 
         roles.save()
@@ -55,8 +55,7 @@ class CreateProjectSerializer(serializers.ModelSerializer):
         fields = ['name', 'title', 'description']
 
     def create(self, attrs):
-        projects = Projects.objects.create()
-        projects.name = attrs['name']
+        projects = Projects.objects.create(name=attrs['name'])
         projects.title = attrs['title']
         projects.description = attrs['description']
         projects.save()
@@ -65,11 +64,37 @@ class CreateProjectSerializer(serializers.ModelSerializer):
 
 class BlogGetSerializer(serializers.ModelSerializer):
     class Meta:
-        fields = ['action',]
+        fields = []
 
     def create(self, attrs):
-        if ('action' in attrs):
-            action = Actions.objects.get(name=attrs['action'])
-            print(action.name)
+        results = {}
 
-        return 'results'
+        if 'action' in attrs:
+            action = Actions.objects.get(name=attrs['action'])
+            role = Roles.objects.get(id=action.id)
+            groups = Groups.objects.get(roles=role.id)
+            results['action'] = str(action.toDict())
+            results['role'] = str(role.toDict())
+            results['groups'] = str(groups.toDict())
+
+        if 'role' in attrs:
+            role = Roles.objects.get(name=attrs['role'])
+            groups = Groups.objects.get(roles=role.id)
+            results['role'] = str(role.toDict())
+            results['groups'] = str(groups.toDict())
+
+            return results
+
+        if 'group' in attrs:
+            groups = Groups.objects.get(name=attrs['group'])
+            results['groups'] = str(groups.toDict())
+
+            return results
+
+        if 'project' in attrs:
+            project = Projects.objects.get(name=attrs['project'])
+            results['project'] = str(project.toDict())
+
+            return results
+
+        return results

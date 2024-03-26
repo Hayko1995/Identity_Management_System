@@ -41,5 +41,5 @@ class BlogGet(APIView):
     def post(self, request, format=None):
         serializer = BlogGetSerializer(
             data=request.data, context={'user': request.user})
-        serializer.create(request.data)
-        return Response({'msg': 'created'}, status=status.HTTP_201_CREATED)
+        results = serializer.create(request.data)
+        return Response(results, status=status.HTTP_201_CREATED)

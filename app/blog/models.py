@@ -11,6 +11,12 @@ class Actions(models.Model):
     def str(self) -> str:
         return self.name
 
+    def toDict(self):
+        results = {}
+        results['name'] = self.name
+        results['title'] = self.title
+        return results
+
 
 class Roles(models.Model):
     name = models.CharField(max_length=100, blank=False, unique=True)
@@ -20,6 +26,11 @@ class Roles(models.Model):
 
     def str(self) -> str:
         return self.name
+
+    def toDict(self):
+        results = {}
+        results['name'] = self.name
+        return results
 
 
 class Groups(models.Model):
@@ -31,6 +42,12 @@ class Groups(models.Model):
     def str(self) -> str:
         return self.name
 
+    def toDict(self) :
+        results = {}
+        results['name'] = self.name
+        results['parent_group'] = self.parent_group
+        return results
+
 
 class Projects(models.Model):
     name = models.CharField(max_length=100, blank=False, unique=True)
@@ -41,3 +58,10 @@ class Projects(models.Model):
 
     def str(self) -> str:
         return self.name
+
+    def toDict(self) :
+        results = {}
+        results['name'] = self.name
+        results['title'] = self.title
+        results['description'] = self.description
+        return results
