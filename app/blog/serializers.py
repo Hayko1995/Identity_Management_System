@@ -39,14 +39,12 @@ class CreateGroupsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Groups
-        fields = ['name', 'roles', 'parent_group']
+        fields = ['name', 'role', 'parent_group']
 
     def create(self, attrs):
-        group = Groups.objects.create()
-        group.name = attrs['name']
-        group.roles_id = Roles.objects.create(name=attrs['roles']).id
+        group = Groups.objects.create(name=attrs['name'])
+        group.roles_id = Roles.objects.get(name=attrs['role']).id
         group.parent_group = attrs['parent_group']
-
         group.save()
         return attrs
 
@@ -63,3 +61,15 @@ class CreateProjectSerializer(serializers.ModelSerializer):
         projects.description = attrs['description']
         projects.save()
         return attrs
+
+
+class BlogGetSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = ['action',]
+
+    def create(self, attrs):
+        if ('action' in attrs):
+            action = Actions.objects.get(name=attrs['action'])
+            print(action.name)
+
+        return 'results'
