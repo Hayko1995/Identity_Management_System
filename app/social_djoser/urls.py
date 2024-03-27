@@ -42,7 +42,6 @@ urlpatterns = [
     path('api/auth/social_django/',
          include('social_django.urls', namespace='social')),
     path('accounts/profile/', ObtainUserFromGoogle.as_view()),
-    path('accounts/profile/', ObtainUserFromGoogle.as_view()),
     path('api/auth/', include('djoser.urls.jwt')),
 
     path('api/auth/jwt/create', CustomJWTToken.as_view(), name='login'),

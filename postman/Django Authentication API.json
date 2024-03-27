@@ -586,30 +586,6 @@
 					"response": []
 				},
 				{
-					"name": "Login Copy",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "email",
-									"value": "Danyka68@email.local",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "Admin1234!!",
-									"type": "text"
-								}
-							]
-						},
-						"url": "{{LH_URL}}auth/jwt/create/"
-					},
-					"response": []
-				},
-				{
 					"name": "changePass",
 					"request": {
 						"method": "POST",
