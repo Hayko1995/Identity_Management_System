@@ -27,8 +27,7 @@ class CreateRolesSerializer(serializers.ModelSerializer):
         fields = ['name']
 
     def create(self, attrs):
-        roles = Roles.objects.create()
-        roles.name = attrs['name']
+        roles = Roles.objects.create(name=attrs['name'])
         roles.actions_id = Actions.objects.get(name=attrs['actions']).id
 
         roles.save()

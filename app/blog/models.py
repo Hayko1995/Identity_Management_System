@@ -21,7 +21,7 @@ class Actions(models.Model):
 class Roles(models.Model):
     name = models.CharField(max_length=100, blank=False, unique=True)
     actions = models.ForeignKey(
-        Actions, on_delete=models.DO_NOTHING, related_name='actions', null=True, blank=True)
+        Actions, on_delete=models.DO_NOTHING, related_name='actions', null=False, blank=False)
     REQUIRED_FIELDS = ['name']
 
     def str(self) -> str:
@@ -36,7 +36,7 @@ class Roles(models.Model):
 class Groups(models.Model):
     name = models.CharField(max_length=100, blank=False, unique=True)
     roles = models.ForeignKey(
-        Roles, on_delete=models.DO_NOTHING, related_name='roles', null=True, blank=True)
+        Roles, on_delete=models.DO_NOTHING, related_name='roles', null=False, blank=False)
     parent_group = models.CharField(max_length=100, blank=True)
 
     def str(self) -> str:
