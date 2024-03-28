@@ -10,7 +10,7 @@ class CreateActions(APIView):
         serializer = CreateActionSerializer(
             data=request.data, context={'user': request.user})
         results = serializer.create(request.data)
-        return Response({'msg': 'created'}, status=status.HTTP_201_CREATED)
+        return Response({'msg': results}, status=status.HTTP_201_CREATED)
 
 
 class CreateRoles(APIView):

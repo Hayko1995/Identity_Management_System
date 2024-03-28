@@ -13,10 +13,9 @@ class CreateActionSerializer(serializers.ModelSerializer):
 
     def create(self, attrs):
         try:
-            action = Actions.objects.create()
+            action = Actions.objects.create(name=attrs['name'])
         except:
             return "item exist"
-        action.name = attrs['name']
         action.title = attrs['title']
 
         action.save()
@@ -30,11 +29,17 @@ class CreateRolesSerializer(serializers.ModelSerializer):
         fields = ['name']
 
     def create(self, attrs):
+
         try:
-            roles = Roles.objects.create(name=attrs['name'])
+            roleId = Actions.objects.get(name=attrs['actions']).id
         except:
+            return "role is missing"
+
+        try:
+            roles = Roles.objects.create(name=attrs['name'], actions_id=roleId)
+        except Exception as e:
+            print(e)
             return "item exist"
-        roles.actions_id = Actions.objects.get(name=attrs['actions']).id
 
         roles.save()
         return "saved"
@@ -48,13 +53,14 @@ class CreateGroupsSerializer(serializers.ModelSerializer):
 
     def create(self, attrs):
         try:
-            group = Groups.objects.create(name=attrs['name'])
-        except:
-            return "item exist"
-        try:
-            group.roles_id = Roles.objects.get(name=attrs['role']).id
+            roleId = Roles.objects.get(name=attrs['role']).id
         except:
             return "role is missing"
+        try:
+            group = Groups.objects.create(name=attrs['name'], roles_id=roleId)
+        except:
+            return "item exist"
+
         group.parent_group = attrs['parent_group']
         group.save()
         return attrs

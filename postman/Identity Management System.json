@@ -920,6 +920,16 @@
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzExNTU0NjIzLCJpYXQiOjE3MTE1NTQzMjMsImp0aSI6ImViNjk1M2U1NGRhYjRiYWY4NDI1MGVjMGMyNDY4ZDczIiwidXNlcl9pZCI6MX0.VBklnCdfje2DRwksKyhPe_UFz85qUIrdwCeiR-GHYKM",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -934,7 +944,7 @@
 							"urlencoded": [
 								{
 									"key": "email",
-									"value": "{{$randomUserName}}@email.local",
+									"value": "Earlene62@email.local",
 									"type": "text"
 								},
 								{
@@ -980,13 +990,11 @@
 							]
 						},
 						"url": {
-							"raw": "{{LH_URL}}api/auth/users/",
+							"raw": "{{LH_URL}}updateUser/",
 							"host": [
-								"{{LH_URL}}api"
+								"{{LH_URL}}updateUser"
 							],
 							"path": [
-								"auth",
-								"users",
 								""
 							]
 						}
@@ -1008,7 +1016,7 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "{{$randomUserName}}",
+									"value": "action3",
 									"type": "text"
 								},
 								{
