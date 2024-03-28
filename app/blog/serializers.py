@@ -12,7 +12,10 @@ class CreateActionSerializer(serializers.ModelSerializer):
         fields = ['name', 'title']
 
     def create(self, attrs):
-        action = Actions.objects.create()
+        try:
+            action = Actions.objects.create()
+        except:
+            return "item exist"
         action.name = attrs['name']
         action.title = attrs['title']
 
@@ -27,11 +30,14 @@ class CreateRolesSerializer(serializers.ModelSerializer):
         fields = ['name']
 
     def create(self, attrs):
-        roles = Roles.objects.create(name=attrs['name'])
+        try:
+            roles = Roles.objects.create(name=attrs['name'])
+        except:
+            return "item exist"
         roles.actions_id = Actions.objects.get(name=attrs['actions']).id
 
         roles.save()
-        return attrs
+        return "saved"
 
 
 class CreateGroupsSerializer(serializers.ModelSerializer):
@@ -41,8 +47,14 @@ class CreateGroupsSerializer(serializers.ModelSerializer):
         fields = ['name', 'role', 'parent_group']
 
     def create(self, attrs):
-        group = Groups.objects.create(name=attrs['name'])
-        group.roles_id = Roles.objects.get(name=attrs['role']).id
+        try:
+            group = Groups.objects.create(name=attrs['name'])
+        except:
+            return "item exist"
+        try:
+            group.roles_id = Roles.objects.get(name=attrs['role']).id
+        except:
+            return "role is missing"
         group.parent_group = attrs['parent_group']
         group.save()
         return attrs
@@ -54,7 +66,10 @@ class CreateProjectSerializer(serializers.ModelSerializer):
         fields = ['name', 'title', 'description']
 
     def create(self, attrs):
-        projects = Projects.objects.create(name=attrs['name'])
+        try:
+            projects = Projects.objects.create(name=attrs['name'])
+        except:
+            return "item exist"
         projects.title = attrs['title']
         projects.description = attrs['description']
         projects.save()
