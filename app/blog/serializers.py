@@ -90,30 +90,78 @@ class BlogGetSerializer(serializers.ModelSerializer):
         results = {}
 
         if 'action' in attrs:
-            action = Actions.objects.get(name=attrs['action'])
-            role = Roles.objects.get(id=action.id)
-            groups = Groups.objects.get(roles=role.id)
-            results['action'] = str(action.toDict())
-            results['role'] = str(role.toDict())
-            results['groups'] = str(groups.toDict())
+            try:
+                action = Actions.objects.get(name=attrs['action'])
+            except:
+                pass
+            try:
+                role = Roles.objects.filter(actions_id=action.id).values()
+                roles = []
+                for i in role:
+                    roles.append(i)
+            except Exception as e:
+                pass
+            try:
+                print(roles[0])
+                group = Groups.objects.filter(roles=roles[0]['id']).values()
+                groups = []
+                for i in group:
+                    groups.append(i)
+            except Exception as e:
+                pass
+            try:
+                results['action'] = str(action.toDict())
+            except:
+                pass
+            try:
+                results['role'] = str(roles)
+            except:
+                pass
+            try:
+                results['groups'] = str(groups)
+            except:
+                pass
+            return results
 
         if 'role' in attrs:
-            role = Roles.objects.get(name=attrs['role'])
-            groups = Groups.objects.get(roles=role.id)
-            results['role'] = str(role.toDict())
-            results['groups'] = str(groups.toDict())
+            try:
+                role = Roles.objects.get(name=attrs['role'])
+            except:
+                return "role is missing"
+            try:
+                
+                group = Groups.objects.filter(roles=role.id).values()
+                groups = []
+                for i in group:
+                    groups.append(i)
+            except:
+                pass
+            try:
+                results['role'] = str(role.toDict())
+            except:
+                pass
+            try:
+                results['groups'] = str(groups)
+            except:
+                pass
 
             return results
 
         if 'group' in attrs:
-            groups = Groups.objects.get(name=attrs['group'])
-            results['groups'] = str(groups.toDict())
+            try:
+                groups = Groups.objects.get(name=attrs['group'])
+                results['groups'] = str(groups.toDict())
+            except:
+                return "group is missing"
 
             return results
 
         if 'project' in attrs:
-            project = Projects.objects.get(name=attrs['project'])
-            results['project'] = str(project.toDict())
+            try:
+                project = Projects.objects.get(name=attrs['project'])
+                results['project'] = str(project.toDict())
+            except:
+                pass
 
             return results
 
