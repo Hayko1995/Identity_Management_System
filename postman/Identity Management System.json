@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "bc01ae54-13db-4c38-b1e5-f9dac7f5a32c",
 		"name": "Identity Management System",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "7442233"
 	},
 	"item": [
@@ -199,7 +199,22 @@
 										}
 									]
 								},
-								"url": "http://localhost:8000/api/auth/social/o/google-oauth2/",
+								"url": {
+									"raw": "http://localhost:8000/api/auth/social/o/google-oauth2/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"auth",
+										"social",
+										"o",
+										"google-oauth2",
+										""
+									]
+								},
 								"description": "Copy code that google returns to ObtainUserFromGoogle URL (shows up in browser and console) and execute to get token. With this token you can access user's information and other protected endpoints."
 							},
 							"response": [
@@ -223,7 +238,22 @@
 												}
 											]
 										},
-										"url": "http://localhost:8000/api/auth/social/o/google-oauth2/"
+										"url": {
+											"raw": "http://localhost:8000/api/auth/social/o/google-oauth2/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"auth",
+												"social",
+												"o",
+												"google-oauth2",
+												""
+											]
+										}
 									},
 									"status": "Created",
 									"code": 201,
@@ -455,7 +485,22 @@
 										}
 									]
 								},
-								"url": "http://localhost:8000/api/auth/social/o/google-oauth2/",
+								"url": {
+									"raw": "http://localhost:8000/api/auth/social/o/google-oauth2/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"auth",
+										"social",
+										"o",
+										"google-oauth2",
+										""
+									]
+								},
 								"description": "Copy code that google returns to ObtainUserFromGoogle URL (shows up in browser and console) and execute to get token. With this token you can access user's information and other protected endpoints."
 							},
 							"response": [
@@ -479,7 +524,22 @@
 												}
 											]
 										},
-										"url": "http://localhost:8000/api/auth/social/o/google-oauth2/"
+										"url": {
+											"raw": "http://localhost:8000/api/auth/social/o/google-oauth2/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"auth",
+												"social",
+												"o",
+												"google-oauth2",
+												""
+											]
+										}
 									},
 									"status": "Created",
 									"code": 201,
@@ -534,9 +594,13 @@
 					"request": {
 						"auth": {
 							"type": "bearer",
-							"bearer": {
-								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzExMTg1MzIyLCJpYXQiOjE3MTExODIzMjIsImp0aSI6Ijk3ZjAyYzQyNWE4MDRjNzI5OWRmYmMyMGNiNmUwNWEzIiwidXNlcl9pZCI6MX0.6HUJzNcak4XjLDxMeDcLClSYcORBaP0sbsoajQxJKXM"
-							}
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzExMTg1MzIyLCJpYXQiOjE3MTExODIzMjIsImp0aSI6Ijk3ZjAyYzQyNWE4MDRjNzI5OWRmYmMyMGNiNmUwNWEzIiwidXNlcl9pZCI6MX0.6HUJzNcak4XjLDxMeDcLClSYcORBaP0sbsoajQxJKXM",
+									"type": "string"
+								}
+							]
 						},
 						"method": "GET",
 						"header": [],
@@ -557,7 +621,18 @@
 								}
 							]
 						},
-						"url": "{{LH_URL}}api/auth/users/me/"
+						"url": {
+							"raw": "{{LH_URL}}api/auth/users/me/",
+							"host": [
+								"{{LH_URL}}api"
+							],
+							"path": [
+								"auth",
+								"users",
+								"me",
+								""
+							]
+						}
 					},
 					"response": []
 				},
@@ -581,7 +656,17 @@
 								}
 							]
 						},
-						"url": "{{LH_URL}}auth/jwt/create/"
+						"url": {
+							"raw": "{{LH_URL}}auth/jwt/create/",
+							"host": [
+								"{{LH_URL}}auth"
+							],
+							"path": [
+								"jwt",
+								"create",
+								""
+							]
+						}
 					},
 					"response": []
 				},
@@ -605,7 +690,17 @@
 								}
 							]
 						},
-						"url": "{{LH_URL}}auth/jwt/create/"
+						"url": {
+							"raw": "{{LH_URL}}auth/jwt/create/",
+							"host": [
+								"{{LH_URL}}auth"
+							],
+							"path": [
+								"jwt",
+								"create",
+								""
+							]
+						}
 					},
 					"response": []
 				},
@@ -702,7 +797,17 @@
 								}
 							]
 						},
-						"url": "{{LH_URL}}api/auth/users/"
+						"url": {
+							"raw": "{{LH_URL}}api/auth/users/",
+							"host": [
+								"{{LH_URL}}api"
+							],
+							"path": [
+								"auth",
+								"users",
+								""
+							]
+						}
 					},
 					"response": []
 				},
@@ -742,9 +847,13 @@
 					"request": {
 						"auth": {
 							"type": "bearer",
-							"bearer": {
-								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzExMjExMzg4LCJpYXQiOjE3MTEyMDgzODgsImp0aSI6IjE4M2Q1NGViZjlhMTRkMjQ5MmIzZjA0MjU0NzBjZjIyIiwidXNlcl9pZCI6MiwidXVpZCI6ImRiMWE2YWJjLWUwY2QtNGU3ZS1iYjA4LWMyYWIzNGVmNmM5YiJ9.vOXWpq64im3ppHS9B5O7WAzCMg0ECCcUq7zTlCCXXWI"
-							}
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzExMjExMzg4LCJpYXQiOjE3MTEyMDgzODgsImp0aSI6IjE4M2Q1NGViZjlhMTRkMjQ5MmIzZjA0MjU0NzBjZjIyIiwidXNlcl9pZCI6MiwidXVpZCI6ImRiMWE2YWJjLWUwY2QtNGU3ZS1iYjA4LWMyYWIzNGVmNmM5YiJ9.vOXWpq64im3ppHS9B5O7WAzCMg0ECCcUq7zTlCCXXWI",
+									"type": "string"
+								}
+							]
 						},
 						"method": "POST",
 						"header": [
@@ -765,7 +874,15 @@
 								}
 							]
 						},
-						"url": "{{LH_URL}}logout/"
+						"url": {
+							"raw": "{{LH_URL}}logout/",
+							"host": [
+								"{{LH_URL}}logout"
+							],
+							"path": [
+								""
+							]
+						}
 					},
 					"response": []
 				},
@@ -862,7 +979,17 @@
 								}
 							]
 						},
-						"url": "{{LH_URL}}api/auth/users/"
+						"url": {
+							"raw": "{{LH_URL}}api/auth/users/",
+							"host": [
+								"{{LH_URL}}api"
+							],
+							"path": [
+								"auth",
+								"users",
+								""
+							]
+						}
 					},
 					"response": []
 				}
@@ -891,7 +1018,16 @@
 								}
 							]
 						},
-						"url": "{{LH_URL}}blog/actions/create"
+						"url": {
+							"raw": "{{LH_URL}}blog/actions/create",
+							"host": [
+								"{{LH_URL}}blog"
+							],
+							"path": [
+								"actions",
+								"create"
+							]
+						}
 					},
 					"response": []
 				},
@@ -915,7 +1051,15 @@
 								}
 							]
 						},
-						"url": "{{LH_URL}}roles/create"
+						"url": {
+							"raw": "{{LH_URL}}roles/create",
+							"host": [
+								"{{LH_URL}}roles"
+							],
+							"path": [
+								"create"
+							]
+						}
 					},
 					"response": []
 				},
@@ -939,7 +1083,15 @@
 								}
 							]
 						},
-						"url": "{{LH_URL}}roles/create"
+						"url": {
+							"raw": "{{LH_URL}}roles/create",
+							"host": [
+								"{{LH_URL}}roles"
+							],
+							"path": [
+								"create"
+							]
+						}
 					},
 					"response": []
 				},
@@ -968,7 +1120,16 @@
 								}
 							]
 						},
-						"url": "{{LH_URL}}blog/projects/create"
+						"url": {
+							"raw": "{{LH_URL}}blog/projects/create",
+							"host": [
+								"{{LH_URL}}blog"
+							],
+							"path": [
+								"projects",
+								"create"
+							]
+						}
 					},
 					"response": []
 				},
@@ -997,7 +1158,15 @@
 								}
 							]
 						},
-						"url": "{{LH_URL}}blog/get"
+						"url": {
+							"raw": "{{LH_URL}}blog/get",
+							"host": [
+								"{{LH_URL}}blog"
+							],
+							"path": [
+								"get"
+							]
+						}
 					},
 					"response": []
 				}
